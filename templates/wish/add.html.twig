@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+ {% block title %}Ajout Voeux{% endblock %}
+
+ {% block body %}
+
+     <div class="row">
+
+         <div class="form mt-5">
+             <h2>Ajout Voeux</h2>
+             {{ form_start(formWish) }}
+             <div>
+                 {{ form_row(formWish.title) }}
+                 {{ form_errors(formWish.title) }}
+             </div>
+             <div>
+                 {{ form_row(formWish.description) }}
+                 {{ form_errors(formWish.description) }}
+             </div
+             <div>
+                 {{ form_row(formWish.category) }}
+                 {{ form_errors(formWish.category) }}
+             </div>
+             <div>
+                 {{ form_row(formWish.author) }}
+                 {{ form_errors(formWish.author) }}
+             </div>
+
+             {{ form_end(formWish) }}
+
+         </div>
+         <a class="btn btn-primary" href="{{ path("app_wish_list") }}" role="button">Retour Liste</a>
+     </div>
+ {% endblock %}

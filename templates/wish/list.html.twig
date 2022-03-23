@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Liste wish{% endblock %}
+
+{% block body %}
+    <div class="row mt-5">
+        <div class="liste">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Auteur</th>
+                    <th scope="col">Date de création</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for wish in wishes %}
+                    <tr>
+                        <td>{{ wish.id }}</td>
+                        <td><a href="{{ path('app_wish_detail',{id:wish.id}) }}">{{ wish.title }}</a></td>
+                        <td>{{ wish.description|slice(0,80) }}...</td>
+                        <td>{{ wish.author }}</td>
+                        <td>{{ wish.dateCreated|date(" d-m-Y ") }}</td>
+                        <td>{{ wish.category.name }}</td>
+                        <td><i class="bi bi-trash3"></i>
+                            <i class="bi bi-pencil"></i>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a class="btn btn-primary" href="{{ path("app_wish_ajout") }}" role="button">Ajout Voeux</a>
+        </div>
+    </div>
+{% endblock %}
